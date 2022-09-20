@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+int main()
+{
+   char a;
+
+   printf("input number a to get its name:\n");
+   scanf("%d", &a);
+
+   if(a==0)
+   {
+      printf("%d is zero, isn't it?", a);
+   }
+    if(a==1)
+    {
+        printf("%d is one, isn't it?", a);
+    }
+    if(a==2)
+    {
+        printf("%d is two, isn't it?", a);
+    }
+    if(a==3)
+    {
+        printf("%d is three, isn't it?", a);
+    }
+    if(a==4)
+    {
+        printf("%d is four, isn't it?", a);
+    }
+    if(a==5)
+    {
+        printf("%d is five, isn't it?", a);
+    }
+    if(a==6)
+    {
+        printf("%d is six, isn't it?", a);
+    }
+    if(a==7)
+    {
+        printf("%d is seven, isn't it?", a);
+    }
+    if(a==8)
+    {
+        printf("%d is eight, isn't it?", a);
+    }
+    if(a==9)
+    {
+        printf("%d is nine, isn't it?", a);
+    }
+    if(a==10)
+    {
+        printf("%d is ten, isn't it?", a);
+    }
+    if(a<0)
+    {
+        printf("please, use numbers from 0 to 10");
+    }
+    if(a>10)
+    {
+        printf("please, use numbers from 0 to 10");
+    }
+    return 0;
+}
