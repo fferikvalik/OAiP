@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    float a, b, c;
+    printf("input a, b, c as numbers\n");
+    scanf("%f %f %f", &a, &b, &c);
+
+    if (a == 0 && b == 0 && c == 0)
+    {
+        printf("Please, input at least one number that is not 0.");
+        goto label1;
+    }
+    if (a == 0 || b == 0 || c == 0)
+    {
+        float e;
+        e = a+b+c;
+        float mari;
+        mari = (e/3);
+        printf("%.2f is medium arithmetical of a, b and c.", mari);
+        goto label1;
+    }
+    if (a>0 || b>0 || c>0)
+    {
+        float d;
+        d = a*b*c;
+        float mgeo;
+        mgeo = cbrtf (d);
+        printf("%.2f is medium geometrical of a, b and c.", mgeo );
+        goto label1;
+    }
+    if (a<0 || b<0 || c<0)
+    {
+        float d;
+        d = a*b*c;
+        float mgeo;
+        mgeo = cbrtf (d);
+        printf("%.2f is medium geometrical of a, b and c.", mgeo );
+        goto label1;
+    }
+    label1:
+       return 0;
+}
