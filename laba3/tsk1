@@ -1,0 +1,139 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main() {
+    int i, a, n;
+    float min, arra[100];
+    int j;
+    int numMaxFirst, summ = 0;
+    int *arr, *arr1;
+    printf("Do you want to use random?\n");
+    while (scanf("%d", &a) != 1 || getchar() != '\n' || a > 1 || a < 0) {
+        printf("please, use 1 or 0 for yes or no answear: ");
+        fflush(stdin);
+    }
+
+    switch (a) {
+        case 0:
+            printf("Enter numbers: ");  // вводим количество элементов
+            while (scanf("%d", &n) != 1 || getchar() != '\n') {
+                printf("try again: ");
+                fflush(stdin);
+            }
+            // выделяем память под n элементов
+            arr = (int *) calloc(n, sizeof(int));
+
+
+            for (i = 0; i < n; i++) { // вводим элементы с клавиатуры
+                printf("input element %d: ", i + 1);
+                while (scanf("%d", &arr[i]) != 1 || getchar() != '\n') {
+                    printf("try again: ");
+                    fflush(stdin);
+                }
+
+                if (arr[i] > 0) { // если элемент больше положительный запоминаем его для сравнения
+                    numMaxFirst = i;// и запоминаем его позицию
+                }
+            }
+
+            // ищем первый положительный
+            for (i = 0; i < n; i++) {
+                if (arr[i] > 0) {
+                    numMaxFirst = i;
+                    break;
+                }
+            }
+
+            // ищем с конца положительный элемент
+            for (i = n; i >= 0; --i) {
+                if (arr[i] > 0) // нашли положительный элемент
+                {
+                    if (i == numMaxFirst) // позиция совпала с уже имеющимся значит
+                    { //  положительный элемент один
+                        printf("\none positive element: 0\n");
+                    } else  // иначе
+                    { // считаем количество
+                        for (j = numMaxFirst + 1; j < i; j++)
+                            summ += arr[j];
+                        printf("\nsumm between positive element: %i\n", summ);
+                    }
+                    break;
+                }
+
+            }
+            for (int i = 0; i < 100; ++i) {
+                for (int j = 0; j < 10; ++j)
+                    arra[i] = arr[i];
+            }
+
+            min = arr[1];
+
+            for (i = 0; i < n; i++) {
+                if (min > arr[i])
+                    min = arr[i];
+            }
+            printf("min number is: %.f\n", min);
+            getchar();
+
+            break;
+        case 1:
+            printf("Input length of your array: ");
+            while (scanf("%d", &n) != 1 || getchar() != '\n') {
+                printf("try again: ");
+                fflush(stdin);
+            }
+
+
+            srand(time(0));
+            printf("generated array is:\n");
+            arr1 = (int *) calloc(n, sizeof(int));
+            for (i = 0; i < n; i++) {
+                arr1[i] = rand() % 200 - 100; // диапазон случайных чисед от 0 до 100
+                printf("%d ", arr1[i]);
+
+                if (arr1[i] > 0) { // если элемент больше положительный запоминаем его для сравнения
+                    numMaxFirst = i;// и запоминаем его позицию
+                }
+            }
+            // ищем первый положительный
+            for (i = 0; i < n; i++) {
+                if (arr1[i] > 0) {
+                    numMaxFirst = i;
+                    break;
+                }
+            }
+
+            // ищем с конца положительный элемент
+            for (i = n; i >= 0; --i) {
+                if (arr1[i] > 0) // нашли положительный элемент
+                {
+                    if (i == numMaxFirst) // позиция совпала с уже имеющимся значит
+                    { //  положительный элемент один
+                        printf("\none positive element: 0\n");
+                    } else  // иначе
+                    { // считаем количество
+                        for (j = numMaxFirst + 1; j < i; j++)
+                            summ += arr1[j];
+                        printf("\nsumm between positive element: %i\n", summ);
+                    }
+                    break;
+                }
+
+            }
+            for (int i = 0; i < 100; ++i) {
+                for (int j = 0; j < 10; ++j)
+                    arra[i] = arr1[i];
+            }
+
+            min = arr1[1];
+
+            for (i = 0; i < n; i++) {
+                if (min > arr1[i])
+                    min = arr1[i];
+            }
+            printf("min number is: %.f\n", min);
+            getchar();
+            break;
+
+    }return 0;
+}
