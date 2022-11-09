@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+int concat(int arr1[],int arr2[], int size1, int size2){
+    int size = size1 + size2;
+    int resultArr[size];
+    int j = 0;
+    int k = 0;
+    for(int i = 0; i < size; i++){
+        if(j <= size1){
+            resultArr[i] = arr2[k];
+            k++;
+        }
+        else if (k >= size2){
+            resultArr[i] = arr1[j];
+            j++;
+        }
+        else if(arr1[j] > arr2[k]){
+            resultArr[i] = arr1[j];
+            j++;
+        }
+        else{
+            resultArr[i] = arr2[k];
+            k++;
+        }
+    }
+    printf("[");
+    for(int ind = 0; ind < size; ind++){
+        printf("%d, ", resultArr[ind]);
+    }
+    printf("] \n");
+}
+
+int main(){
+    int i;
+    int *arra, *arrb;
+    int w, s;
+    int arr1[100];
+    int arr2[100];
+    printf("Input length of thirst massive:");
+    while(scanf("%d",&w)!=1 || getchar()!='\n') {
+        printf("try again: ");
+        fflush(stdin);
+    }
+    arra = (int *) calloc(w, sizeof(int));
+    for (i = 0; i < w; i++) { // вводим элементы с клавиатуры
+        printf("input element %d: ", i + 1);
+        while (scanf("%d", &arra[i]) != 1 || getchar() != '\n') {
+            printf("try again: ");
+            fflush(stdin);
+        }}
+    for (int i = 0; i < 100; ++i){
+        for (int j = 0; j < 10; ++j)
+            arr1[i]=arra[i];
+    }
+
+    printf("Input length of second massive:");
+    while(scanf("%d",&s)!=1 || getchar()!='\n') {
+        printf("try again: ");
+        fflush(stdin);
+    }
+    arrb = (int *) calloc(s, sizeof(int));
+    for (i = 0; i < s; i++) { // вводим элементы с клавиатуры
+        printf("input element %d: ", i + 1);
+        while (scanf("%d", &arrb[i]) != 1 || getchar() != '\n') {
+            printf("try again: ");
+            fflush(stdin);
+        }}
+    for (int i = 0; i < 100; ++i) {
+        for (int j = 0; j < 10; ++j)
+            arr2[i]=arrb[i];
+    }
+    concat(arr1, arr2, w,s);
+    return 0;
+}
