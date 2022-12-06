@@ -5,25 +5,34 @@
 #include <time.h>
 #include <stdio.h>
 #include "loccale.h"
+void check(int *a)
+{
+    int p;
+    while (scanf("%d", &p)!= 1 || p > 1 || p < 0 || getchar() != '\n'){
+        printf("Неверный ввод. Попробуйте ещё раз.\n");
+        fflush(stdin);
+    }
+    *a = p;
+}
 void printArchLogo(){
 
-    printf("\x1b[1;40;31m\x1b");
-    printf("\n");
-    puts(" \t\t\t         $c2,$c1                      _     _ _");
-    puts(" \t\t\t        $c2/$c1#$c2\\$c1        __ _ _ __ ___| |__ | (_)_ __  _   ___  __");
-    puts(" \t\t\t       $c2/$c1###$c2\\$c1      / _` | '__/ __| '_ \\| | | '_ \\| | | \\ \\/ /");
-    puts(" \t\t\t      $c2/$c1#####$c2\\$c1    | (_| | | | (__| | | | | | | | | |_| |>  <");
-    puts(" \t\t\t     $c2/$c1##,-,##$c2\\$c1    \\__,_|_|  \\___|_| |_|_|_|_| |_|\\__,_/_/\\_\\");
-    puts(" \t\t\t    $c2/$c1##(   )##$c2\\$c1");
-    puts(" \t\t\t   $c2/$c1#.--   --.#$c2\\   \\    A simple, elegant GNU/Linux distribution.");
-    puts(" \t\t\t  $c2/$c1`           `$c2\\$z");
-    printf("\n");
-    printf("\x1b[0m\x1b\n");
+    printf("\x1b[1;40;31m                                                                                          \t\t\t\x1b[0m");
+    printf("\n\x1b[0m");
+    puts("\x1b[1;40;31m\x1b \t\t\t         $c2,$c1                      _     _ _                               \t\t\t\x1b[0m\x1b");
+    puts("\x1b[1;40;31m\x1b \t\t\t        $c2/$c1#$c2\\$c1        __ _ _ __ ___| |__ | (_)_ __  _   ___  __      \t\t\t\x1b[0m\x1b");
+    puts("\x1b[1;40;31m\x1b \t\t\t       $c2/$c1###$c2\\$c1      / _` | '__/ __| '_ \\| | | '_ \\| | | \\ \\/ /      \t\t\t\x1b[0m\x1b");
+    puts("\x1b[1;40;31m\x1b \t\t\t      $c2/$c1#####$c2\\$c1    | (_| | | | (__| | | | | | | | | |_| |>  <       \t\t\t\x1b[0m\x1b");
+    puts("\x1b[1;40;31m\x1b \t\t\t     $c2/$c1##,-,##$c2\\$c1    \\__,_|_|  \\___|_| |_|_|_|_| |_|\\__,_/_/\\_\\      \t\t\t\x1b[0m\x1b");
+    puts("\x1b[1;40;31m\x1b \t\t\t    $c2/$c1##(   )##$c2\\$c1                                                   \t\t\t\x1b[0m\x1b");
+    puts("\x1b[1;40;31m\x1b \t\t\t   $c2/$c1#.--   --.#$c2\\   \\    A simple, elegant GNU/Linux distribution.    \t\t\t\x1b[0m\x1b");
+    puts("\x1b[1;40;31m\x1b \t\t\t  $c2/$c1`           `$c2\\$z                                                  \t\t\t\x1b[0m\x1b");
+    printf("\x1b[1;40;31m                                                                                          \t\t\t\x1b[0m");
+    printf("\x1b[1;40;31m\x1b[0m\x1b\n\n");
 }
 
 void printTsk1()
 {
-    printf("\tВ одномерном массиве выполнить \n     сортировку четных элементов методом выбора\n\n");
+    printf("\tВ одномерном массиве выполнить \n сортировку четных элементов методом выбора\n\n");
 
 }
 void size(int *n){
@@ -195,7 +204,7 @@ void bubble(int n, int* arr, int* t2){
     }
     F= clock() * 1000 / CLOCKS_PER_SEC;
     *t2 =F-S;
-    n=m;
+
 }
 
 void sravn(int t1, int t2) {
@@ -206,7 +215,7 @@ void sravn(int t1, int t2) {
         printf("\x1b[33;40mСортировка пузырьком быстрее сортировки выбором\x1b[0m\n__________________________________________________________\x1b[0m");
     }
     else {
-        printf("\x1b[33;45mДве сортировки по времени равны\x1b[0m\n__________________________________________________________\x1b[0m");
+        printf("\x1b[33;40mДве сортировки по времени равны\x1b[0m\n__________________________________________________________\x1b[0m");
     }
 }
 
@@ -265,14 +274,14 @@ void work_in_matr(int** matr, int n, int m){
     int arr_buf[100];            // Буфер.
     int s_now = 0, s_prev=0;    // Суммы.
 
-    //  Цикл СОРТИРОВКИ
+    // !!! Цикл СОРТИРОВКИ !!!
     for(int z=0; z<m; z++)
     {
         int* ptr_arr=&matr[z][0];    // Указатель на первый эллемент z-ого ряда в массиве.
-        for (int i = z; i < m; i++)
+        for (int i = z; i < n; i++)
         {
             // Вычисляем сумму элементов в рядах.
-            for (int j = 0; j < n; j++)
+            for (int j = 0; j < m; j++)
             {
                 s_prev += *ptr_arr;
                 s_now += matr[i][j];
@@ -289,7 +298,6 @@ void work_in_matr(int** matr, int n, int m){
                     //на адрес которого указывает указатель.
                     ptr_arr++;  // Присваиваем указателю следующее значение столбца.
                 }
-                *arr_buf=
                 ptr_arr-=n; // Возвращаем указатель на первоночальное значение.
             }
             s_now=0; // Обнуляем суммы.
@@ -305,7 +313,7 @@ void work_in_matr(int** matr, int n, int m){
 
 }
 
-void check_12_2(int *arr,int row, int col){
+void check_matr(int *arr,int row, int col){
     int yn;
     while (scanf("%d", &yn) != 1 || yn > 1 || yn < 0 || yn % 1 != 0 || getchar() != '\n'){
         printf("Неверный ввод. Попробуйте ещё раз : ");
