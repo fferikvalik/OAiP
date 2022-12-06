@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
+void check(int *a);
 void printArchLogo();
 void printTsk1();
 void printTsk2();
@@ -31,6 +32,6 @@ void printarr_2(int** matr, int n, int m);
 void scanarr_2(int** matr, int n, int m);
 void randarr_2(int** matr, int n, int m);
 void work_in_matr(int** matr, int n, int m);
-void check_12_2(int *arr,int row, int col);
+void check_matr(int *arr,int row, int col);
 
 #endif //TSK1_LOCCALE_H
